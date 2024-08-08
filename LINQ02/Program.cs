@@ -184,6 +184,21 @@ namespace LINQ02
 
             #endregion
 
+            #endregion
+
+
+            #region LINQ - Set Operators
+
+            #region 1.Find the unique Category names from Product List
+            var uniqueCategoryNames = ProductList.Select(p => p.Category).Distinct();
+            foreach (var category in uniqueCategoryNames)
+            {
+                Console.WriteLine(category);
+            }
+            #endregion
+
+
+
 
 
 
@@ -191,6 +206,8 @@ namespace LINQ02
 
 
             #endregion
+
+
         }
     }
 }
