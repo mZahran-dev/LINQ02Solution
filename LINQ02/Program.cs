@@ -81,12 +81,16 @@ namespace LINQ02
             #endregion
 
             #region 7.Get the length of the longest word in dictionary_english.txt (Read dictionary_english.txt into Array of String First).
-            int longestWord = words.Where(word => !string.IsNullOrWhiteSpace(word)).Max(w => w.Length);
-            Console.WriteLine(longestWord);
-           
+            //int longestWord = words.Where(word => !string.IsNullOrWhiteSpace(word)).Max(w => w.Length);
+            //Console.WriteLine(longestWord);
+
             #endregion
 
+            #region 8.Get the average length of the words in dictionary_english.txt (Read dictionary_english.txt into Array of String First).
+            double averageLength = words.Where(word => !string.IsNullOrWhiteSpace(word)).Average(w => w.Length);
+            Console.WriteLine(averageLength);
 
+            #endregion
 
 
 
