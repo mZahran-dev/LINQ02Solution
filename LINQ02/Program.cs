@@ -75,12 +75,16 @@ namespace LINQ02
             #endregion
 
             #region 6.Get the length of the shortest word in dictionary_english.txt (Read dictionary_english.txt into Array of String First).
-            int shortestWord = words.Where(w => !string.IsNullOrEmpty(w)).Min(w => w.Length);
-            Console.WriteLine(shortestWord);
-    
+            //int shortestWord = words.Where(w => !string.IsNullOrEmpty(w)).Min(w => w.Length);
+            //Console.WriteLine(shortestWord);
+
             #endregion
 
-
+            #region 7.Get the length of the longest word in dictionary_english.txt (Read dictionary_english.txt into Array of String First).
+            int longestWord = words.Where(word => !string.IsNullOrWhiteSpace(word)).Max(w => w.Length);
+            Console.WriteLine(longestWord);
+           
+            #endregion
 
 
 
