@@ -87,12 +87,20 @@ namespace LINQ02
             #endregion
 
             #region 8.Get the average length of the words in dictionary_english.txt (Read dictionary_english.txt into Array of String First).
-            double averageLength = words.Where(word => !string.IsNullOrWhiteSpace(word)).Average(w => w.Length);
-            Console.WriteLine(averageLength);
+            //double averageLength = words.Where(word => !string.IsNullOrWhiteSpace(word)).Average(w => w.Length);
+            //Console.WriteLine(averageLength);
 
             #endregion
 
+            #region 9.Get the total units in stock for each product category.
+            var result = ProductList.GroupBy(p => p.Category).Select(c => new { productCategory = c.Key, totalUnits = c.Sum(p => p.UnitsInStock) });
+            foreach (var item in result)
+            {
+                Console.WriteLine($"{item.productCategory}: {item.totalUnits} units in stock");
+            }
 
+            
+            #endregion
 
 
 
