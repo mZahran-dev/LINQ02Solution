@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.Intrinsics.X86;
 using System.Xml.Linq;
 using static LINQ02.ListGenerators;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace LINQ02
 {
@@ -336,19 +338,39 @@ namespace LINQ02
             #region LINQ – Grouping Operators
 
             #region 1.Use group by to partition a list of numbers by their remainder when divided by 5
-            List<int> numbers = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+            //List<int> numbers = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
 
-            var groupedNumbers = numbers.GroupBy(n => n % 5).ToList(); 
+            //var groupedNumbers = numbers.GroupBy(n => n % 5).ToList(); 
 
-            foreach (var group in groupedNumbers)
+            //foreach (var group in groupedNumbers)
+            //{
+            //    Console.WriteLine($"Numbers with Remainder of {group.Key} divided by 5:");
+            //    foreach (var number in group)
+            //    {
+            //        Console.WriteLine(number);
+            //    }
+            //}
+            #endregion
+
+            #region 2.Uses group by to partition a list of words by their first letter Use dictionary_english.txt for Input
+            var groupedWords = words
+           .GroupBy(word => word.Length > 0 ? word[0] : ' ') 
+           .OrderBy(g => g.Key) 
+           .ToList(); 
+
+            foreach (var group in groupedWords)
             {
-                Console.WriteLine($"Numbers with Remainder of {group.Key} divided by 5:");
-                foreach (var number in group)
+                Console.WriteLine($"First Letter '{group.Key}':");
+                foreach (var word in group)
                 {
-                    Console.WriteLine(number);
+                    Console.WriteLine($"  {word}");
                 }
             }
-            #endregion 
+            #endregion
+
+
+
+
 
 
             #endregion
