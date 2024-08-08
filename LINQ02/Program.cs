@@ -218,15 +218,24 @@ namespace LINQ02
             #endregion
 
             #region 4.Create one sequence that contains the first letters of product names that are not also first letters of customer names.
-            var result = ProductList.Select(p => p.ProductName[0])
-                        .Except(CustomerList.Select(c => c.CustomerName[0]));
+            //var result = ProductList.Select(p => p.ProductName[0])
+            //            .Except(CustomerList.Select(c => c.CustomerName[0]));
+            //foreach (var c in result)
+            //{
+            //    Console.WriteLine(c);
+            //}
+            #endregion
+
+            #region 5.Create one sequence that contains the last Three Characters in each name of all customers and products, including any duplicates
+            var result = ProductList
+                .Select(p => p.ProductName.Length >= 3 ? p.ProductName.Skip(p.ProductName.Length - 3) : p.ProductName)
+                .Concat(CustomerList.Select(c => c.CustomerName.Length >= 3 ? c.CustomerName.Skip(c.CustomerName.Length - 3) : c.CustomerName))
+                .Select(seq => new string(seq.ToArray()) ).ToList();
             foreach (var c in result)
             {
                 Console.WriteLine(c);
             }
             #endregion
-
-
 
             #endregion
 
