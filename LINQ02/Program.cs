@@ -209,15 +209,22 @@ namespace LINQ02
             #endregion
 
             #region 3.Create one sequence that contains the common first letter from both product and customer names.
+            //var result = ProductList.Select(p => p.ProductName[0])
+            //             .Intersect(CustomerList.Select(c => c.CustomerName[0]));
+            //foreach (var c in result)
+            //{
+            //    Console.WriteLine(c);
+            //}
+            #endregion
+
+            #region 4.Create one sequence that contains the first letters of product names that are not also first letters of customer names.
             var result = ProductList.Select(p => p.ProductName[0])
-                         .Intersect(CustomerList.Select(c => c.CustomerName[0]));
+                        .Except(CustomerList.Select(c => c.CustomerName[0]));
             foreach (var c in result)
             {
                 Console.WriteLine(c);
             }
             #endregion
-
-
 
 
 
