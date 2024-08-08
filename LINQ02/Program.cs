@@ -168,18 +168,18 @@ namespace LINQ02
             #endregion
 
             #region 14.Get the average price of each category's products.
-            var result = ProductList
-            .GroupBy(p => p.Category)
-            .Select(g => new
-            {
-                Category = g.Key,
-                AveragePrice = g.Average(p => p.UnitPrice)
-            });
-            foreach (var item in result)
-            {
-                Console.WriteLine(item);
+            //var result = ProductList
+            //.GroupBy(p => p.Category)
+            //.Select(g => new
+            //{
+            //    Category = g.Key,
+            //    AveragePrice = g.Average(p => p.UnitPrice)
+            //});
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item);
 
-            } 
+            //} 
 
 
             #endregion
