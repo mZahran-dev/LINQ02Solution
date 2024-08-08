@@ -285,13 +285,24 @@ namespace LINQ02
             #endregion
 
             #region 5.Get the elements of the array starting from the first element less than its position.
-            int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
-            var result = numbers.SkipWhile ( (num ,index) => num > index );
-            foreach (int num in result)
-            {
-                Console.WriteLine(num);
-            }
+            //int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+            //var result = numbers.SkipWhile ( (num ,index) => num > index );
+            //foreach (int num in result)
+            //{
+            //    Console.WriteLine(num);
+            //}
             #endregion
+
+
+            #endregion
+
+            #region LINQ - Quantifiers
+            #region 1.Determine if any of the words in dictionary_english.txt (Read dictionary_english.txt into Array of String First) contain the substring 'ei'.
+            bool containEI = words.Any(w => w.Contains("ei"));
+            Console.WriteLine(containEI);
+            #endregion
+
+
 
 
             #endregion
