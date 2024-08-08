@@ -241,9 +241,20 @@ namespace LINQ02
             #region LINQ - Partitioning Operators
 
             #region 1.Get the first 3 orders from customers in Washington
-            var result = CustomerList.Where(c => c.Address == "Washington")       
+            //var result = CustomerList.Where(c => c.Address == "Washington")       
+            //             .SelectMany(c => c.Orders)
+            //             .Take(3).ToList();
+
+            //foreach (var order in result)
+            //{
+            //    Console.WriteLine(order);
+            //}
+            #endregion
+
+            #region 2.Get all but the first 2 orders from customers in Washington.
+            var result = CustomerList.Where(c => c.Address == "Washington")
                          .SelectMany(c => c.Orders)
-                         .Take(3).ToList();
+                         .Skip(2).ToList();
 
             foreach (var order in result)
             {
