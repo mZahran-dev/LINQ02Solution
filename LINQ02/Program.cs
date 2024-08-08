@@ -350,7 +350,6 @@ namespace LINQ02
 
             #endregion
 
-
             #region LINQ – Grouping Operators
 
             #region 1.Use group by to partition a list of numbers by their remainder when divided by 5
@@ -385,31 +384,22 @@ namespace LINQ02
             #endregion
 
             #region 3.Consider this Array as an Input
-            string[] Arr = { "from", "salt", "earn", " last", "near", "form" };
-            //Use Group By with a custom comparer that matches words that are consists of the same Characters Together
-            var result = Arr.GroupBy(word => word, new CustomComparer()).ToList();
-            foreach (var group in result)
-            {           
-                foreach (var word in group)
-                {
-                    Console.WriteLine($" {word}");
+            //string[] Arr = { "from", "salt", "earn", " last", "near", "form" };
+            ////Use Group By with a custom comparer that matches words that are consists of the same Characters Together
+            //var result = Arr.GroupBy(word => word, new CustomComparer()).ToList();
+            //foreach (var group in result)
+            //{           
+            //    foreach (var word in group)
+            //    {
+            //        Console.WriteLine($" {word}");
                    
-                }
-                Console.WriteLine("....");
-            }
+            //    }
+            //    Console.WriteLine("....");
+            //}
 
             #endregion
 
-
-
-
             #endregion
-
-
-
-
-
-
 
         }
     }
