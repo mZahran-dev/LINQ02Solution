@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Intrinsics.X86;
 using System.Xml.Linq;
 using static LINQ02.ListGenerators;
@@ -9,6 +10,21 @@ namespace LINQ02
 {
     internal class Program
     {
+        public class CustomComparer : IEqualityComparer<string>
+        {
+            public bool Equals(string? x, string? y)
+            {
+                if (x == null || y == null)
+                    return x == y;
+                return string.Concat(x.OrderBy(c => c)) == string.Concat(y.OrderBy(c => c)); 
+            }
+
+            public int GetHashCode([DisallowNull] string obj)
+            {
+                return string.Concat(obj.OrderBy(c => c)).GetHashCode();  
+            }
+        }
+
         static void Main(string[] args)
         {
             #region LINQ - Element Operators
@@ -353,22 +369,36 @@ namespace LINQ02
             #endregion
 
             #region 2.Uses group by to partition a list of words by their first letter Use dictionary_english.txt for Input
-            var groupedWords = words
-           .GroupBy(word => word.Length > 0 ? word[0] : ' ') 
-           .OrderBy(g => g.Key) 
-           .ToList(); 
+            // var groupedWords = words
+            //.GroupBy(word => word.Length > 0 ? word[0] : ' ') 
+            //.OrderBy(g => g.Key) 
+            //.ToList(); 
 
-            foreach (var group in groupedWords)
-            {
-                Console.WriteLine($"First Letter '{group.Key}':");
-                foreach (var word in group)
-                {
-                    Console.WriteLine($"  {word}");
-                }
-            }
+            // foreach (var group in groupedWords)
+            // {
+            //     Console.WriteLine($"First Letter '{group.Key}':");
+            //     foreach (var word in group)
+            //     {
+            //         Console.WriteLine($"  {word}");
+            //     }
+            // }
             #endregion
 
+            #region 3.Consider this Array as an Input
+            string[] Arr = { "from", "salt", "earn", " last", "near", "form" };
+            //Use Group By with a custom comparer that matches words that are consists of the same Characters Together
+            var result = Arr.GroupBy(word => word, new CustomComparer()).ToList();
+            foreach (var group in result)
+            {           
+                foreach (var word in group)
+                {
+                    Console.WriteLine($" {word}");
+                   
+                }
+                Console.WriteLine("....");
+            }
 
+            #endregion
 
 
 
