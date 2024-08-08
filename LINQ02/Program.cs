@@ -186,7 +186,6 @@ namespace LINQ02
 
             #endregion
 
-
             #region LINQ - Set Operators
 
             #region 1.Find the unique Category names from Product List
@@ -227,19 +226,32 @@ namespace LINQ02
             #endregion
 
             #region 5.Create one sequence that contains the last Three Characters in each name of all customers and products, including any duplicates
-            var result = ProductList
-                .Select(p => p.ProductName.Length >= 3 ? p.ProductName.Skip(p.ProductName.Length - 3) : p.ProductName)
-                .Concat(CustomerList.Select(c => c.CustomerName.Length >= 3 ? c.CustomerName.Skip(c.CustomerName.Length - 3) : c.CustomerName))
-                .Select(seq => new string(seq.ToArray()) ).ToList();
-            foreach (var c in result)
+            //var result = ProductList
+            //    .Select(p => p.ProductName.Length >= 3 ? p.ProductName.Skip(p.ProductName.Length - 3) : p.ProductName)
+            //    .Concat(CustomerList.Select(c => c.CustomerName.Length >= 3 ? c.CustomerName.Skip(c.CustomerName.Length - 3) : c.CustomerName))
+            //    .Select(seq => new string(seq.ToArray()) ).ToList();
+            //foreach (var c in result)
+            //{
+            //    Console.WriteLine(c);
+            //}
+            #endregion
+
+            #endregion
+
+            #region LINQ - Partitioning Operators
+
+            #region 1.Get the first 3 orders from customers in Washington
+            var result = CustomerList.Where(c => c.Address == "Washington")       
+                         .SelectMany(c => c.Orders)
+                         .Take(3).ToList();
+
+            foreach (var order in result)
             {
-                Console.WriteLine(c);
+                Console.WriteLine(order);
             }
             #endregion
 
             #endregion
-
-
         }
     }
 }
