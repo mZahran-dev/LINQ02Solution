@@ -69,10 +69,35 @@ namespace LINQ02
             #region 5.Get the total number of characters of all words in dictionary_english.txt (Read dictionary_english.txt into Array of String First).
             string filePath = "dictionary_english.txt";
             string[] words = File.ReadAllLines (filePath);
-            int totalCharCount = words.Sum(word => word.Length);
-            Console.WriteLine(totalCharCount);
+            //int totalCharCount = words.Sum(word => word.Length);
+            //Console.WriteLine(totalCharCount);
 
             #endregion
+
+            #region 6.Get the length of the shortest word in dictionary_english.txt (Read dictionary_english.txt into Array of String First).
+            try
+            {
+                int shortestWord = words.Where(string.IsNullOrEmpty).Min(w => w.Length);
+                Console.WriteLine(shortestWord);
+            }
+            catch
+            {
+                Console.WriteLine("the shortest word is Empty word");
+            }            
+
+            #endregion
+
+
+
+
+
+
+
+
+
+
+
+
 
             #endregion
         }
