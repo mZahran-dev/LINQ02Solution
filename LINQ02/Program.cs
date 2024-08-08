@@ -304,8 +304,21 @@ namespace LINQ02
             #endregion
 
             #region 2.Return a grouped a list of products only for categories that have at least one product that is out of stock
+            //var result = ProductList.GroupBy(p => p.Category)
+            //            .Where(g => g.Any(p => p.UnitsInStock ==0) );
+            //foreach (var group in result)
+            //{
+            //    Console.WriteLine($"Category: {group.Key}");
+            //    foreach (var product in group)
+            //    {
+            //        Console.WriteLine($"  Product: {product.ProductName}, Units In Stock: {product.UnitsInStock}");
+            //    }
+            //}
+            #endregion
+
+            #region 3.Return a grouped a list of products only for categories that have all of their products in stock.
             var result = ProductList.GroupBy(p => p.Category)
-                        .Where(g => g.Any(p => p.UnitsInStock ==0) );
+                        .Where(g => g.All(p => p.UnitsInStock != 0));
             foreach (var group in result)
             {
                 Console.WriteLine($"Category: {group.Key}");
@@ -315,7 +328,6 @@ namespace LINQ02
                 }
             }
             #endregion
-
 
             #endregion
         }
