@@ -148,7 +148,24 @@ namespace LINQ02
 
             #endregion
 
+            #region 13.Get the products with the most expensive price in each category.
+            //var results = from product in ProductList
+            //              let res = ProductList
+            //              .Where(p => p.Category == product.Category)
+            //              .Max(p => p.UnitPrice)
+            //              where product.UnitPrice == res
+            //              select new
+            //              {
+            //                  Category = product.Category,
+            //                  product = product
+            //              };
 
+            //foreach (var result in results)
+            //{
+            //    Console.WriteLine($"{result}");
+            //}
+
+            #endregion
 
 
 
