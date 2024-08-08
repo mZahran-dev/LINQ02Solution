@@ -48,16 +48,22 @@ namespace LINQ02
             #endregion
 
             #region 3.Return a list of categories and how many products each has
-            var result = ProductList.Select(c => new
-            {
-                category = c.Category,
-                categoryCount = c.Category.Count(),
-            }
-            ).ToList();
-            foreach (var product in result)
-            {
-                Console.WriteLine($"{product.category}: {product.categoryCount} orders");
-            }
+            //var result = ProductList.Select(c => new
+            //{
+            //    category = c.Category,
+            //    categoryCount = c.Category.Count(),
+            //}
+            //).ToList();
+            //foreach (var product in result)
+            //{
+            //    Console.WriteLine($"{product.category}: {product.categoryCount} orders");
+            //}
+            #endregion
+
+            #region 4.Get the total of the numbers in an array.
+            int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+            var result = Arr.Sum(x => x);
+            Console.WriteLine(result);
             #endregion
             #endregion
         }
