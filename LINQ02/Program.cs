@@ -34,20 +34,31 @@ namespace LINQ02
             #endregion
 
             #region 2.Return a list of customers and how many orders each has.
-            var result = CustomerList.Select(c => new
-            {
-                customerName = c.CustomerName,
-                orderCount = c.Orders.Count()
-            }
-            ).ToList();
-            foreach (var customer in result)
-            {
-                Console.WriteLine($"{customer.customerName}: {customer.orderCount} orders");
-            }
+            //var result = CustomerList.Select(c => new
+            //{
+            //    customerName = c.CustomerName,
+            //    orderCount = c.Orders.Count()
+            //}
+            //).ToList();
+            //foreach (var customer in result)
+            //{
+            //    Console.WriteLine($"{customer.customerName}: {customer.orderCount} orders");
+            //}
 
             #endregion
 
-
+            #region 3.Return a list of categories and how many products each has
+            var result = ProductList.Select(c => new
+            {
+                category = c.Category,
+                categoryCount = c.Category.Count(),
+            }
+            ).ToList();
+            foreach (var product in result)
+            {
+                Console.WriteLine($"{product.category}: {product.categoryCount} orders");
+            }
+            #endregion
             #endregion
         }
     }
