@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
+using System.Xml.Linq;
 using static LINQ02.ListGenerators;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace LINQ02
 {
     internal class Program
@@ -252,14 +254,24 @@ namespace LINQ02
             #endregion
 
             #region 2.Get all but the first 2 orders from customers in Washington.
-            var result = CustomerList.Where(c => c.Address == "Washington")
-                         .SelectMany(c => c.Orders)
-                         .Skip(2).ToList();
+            //var result = CustomerList.Where(c => c.Address == "Washington")
+            //             .SelectMany(c => c.Orders)
+            //             .Skip(2).ToList();
 
-            foreach (var order in result)
+            //foreach (var order in result)
+            //{
+            //    Console.WriteLine(order);
+            //}
+            #endregion
+
+            #region  3.Return elements starting from the beginning of the array until a number is hit that is less than its position in the array.
+            int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+            var elements = numbers.TakeWhile((num, index) => num > index);
+            foreach (var num in elements)
             {
-                Console.WriteLine(order);
+                Console.WriteLine(num);
             }
+
             #endregion
 
             #endregion
