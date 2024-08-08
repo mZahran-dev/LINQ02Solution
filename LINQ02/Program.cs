@@ -93,16 +93,23 @@ namespace LINQ02
             #endregion
 
             #region 9.Get the total units in stock for each product category.
-            var result = ProductList.GroupBy(p => p.Category).Select(c => new { productCategory = c.Key, totalUnits = c.Sum(p => p.UnitsInStock) });
-            foreach (var item in result)
-            {
-                Console.WriteLine($"{item.productCategory}: {item.totalUnits} units in stock");
-            }
+            //var result = ProductList.GroupBy(p => p.Category).Select(c => new { productCategory = c.Key, totalUnits = c.Sum(p => p.UnitsInStock) });
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine($"{item.productCategory}: {item.totalUnits} units in stock");
+            //}
 
-            
             #endregion
 
+            #region 10.Get the cheapest price among each category's products
+            var result = ProductList.GroupBy(p => p.Category).Select(c => new { productCategory = c.Key, cheapestPrice = c.Min(m => m.UnitPrice) });
+            foreach (var item in result)
+            {
+                Console.WriteLine($"{item.productCategory}: {item.cheapestPrice} cheapest Price in Stock");
+            }
 
+
+            #endregion
 
 
 
