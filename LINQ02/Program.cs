@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Xml.Linq;
 using static LINQ02.ListGenerators;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -317,19 +318,47 @@ namespace LINQ02
             #endregion
 
             #region 3.Return a grouped a list of products only for categories that have all of their products in stock.
-            var result = ProductList.GroupBy(p => p.Category)
-                        .Where(g => g.All(p => p.UnitsInStock != 0));
-            foreach (var group in result)
-            {
-                Console.WriteLine($"Category: {group.Key}");
-                foreach (var product in group)
-                {
-                    Console.WriteLine($"  Product: {product.ProductName}, Units In Stock: {product.UnitsInStock}");
-                }
-            }
+            //var result = ProductList.GroupBy(p => p.Category)
+            //            .Where(g => g.All(p => p.UnitsInStock != 0));
+            //foreach (var group in result)
+            //{
+            //    Console.WriteLine($"Category: {group.Key}");
+            //    foreach (var product in group)
+            //    {
+            //        Console.WriteLine($"  Product: {product.ProductName}, Units In Stock: {product.UnitsInStock}");
+            //    }
+            //}
             #endregion
 
             #endregion
+
+
+            #region LINQ – Grouping Operators
+
+            #region 1.Use group by to partition a list of numbers by their remainder when divided by 5
+            List<int> numbers = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+
+            var groupedNumbers = numbers.GroupBy(n => n % 5).ToList(); 
+
+            foreach (var group in groupedNumbers)
+            {
+                Console.WriteLine($"Numbers with Remainder of {group.Key} divided by 5:");
+                foreach (var number in group)
+                {
+                    Console.WriteLine(number);
+                }
+            }
+            #endregion 
+
+
+            #endregion
+
+
+
+
+
+
+
         }
     }
 }
