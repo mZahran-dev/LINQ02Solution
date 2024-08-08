@@ -61,10 +61,19 @@ namespace LINQ02
             #endregion
 
             #region 4.Get the total of the numbers in an array.
-            int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
-            var result = Arr.Sum(x => x);
-            Console.WriteLine(result);
+            //int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+            //var result = Arr.Sum(x => x);
+            //Console.WriteLine(result);
             #endregion
+
+            #region 5.Get the total number of characters of all words in dictionary_english.txt (Read dictionary_english.txt into Array of String First).
+            string filePath = "dictionary_english.txt";
+            string[] words = File.ReadAllLines (filePath);
+            int totalCharCount = words.Sum(word => word.Length);
+            Console.WriteLine(totalCharCount);
+
+            #endregion
+
             #endregion
         }
     }
