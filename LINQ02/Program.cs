@@ -28,11 +28,24 @@ namespace LINQ02
             #region LINQ - Aggregate Operators
 
             #region 1.Uses Count to get the number of odd numbers in the array
-            int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
-            var result = Arr.Count(a => a % 2 != 0);
-            Console.WriteLine(result);
+            //int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+            //var result = Arr.Count(a => a % 2 != 0);
+            //Console.WriteLine(result);
             #endregion
 
+            #region 2.Return a list of customers and how many orders each has.
+            var result = CustomerList.Select(c => new
+            {
+                customerName = c.CustomerName,
+                orderCount = c.Orders.Count()
+            }
+            ).ToList();
+            foreach (var customer in result)
+            {
+                Console.WriteLine($"{customer.customerName}: {customer.orderCount} orders");
+            }
+
+            #endregion
 
 
             #endregion
